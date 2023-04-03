@@ -1,5 +1,6 @@
 package org.example;
 
 public interface Coach {
-    public String getDailyWorkout();
+    String getDailyWorkout();
+    String getDailyFortune();
 }
