@@ -1,12 +1,12 @@
 package org.example.bean.scope;
 
-import org.example.Coach;
+import org.example.bean.inversioncontrolanddependencyinjection.Coach;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class BeanScopeDemoApp {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext("beanScope-applicationContext.xml");
+                new ClassPathXmlApplicationContext("bean/beanScope-applicationContext.xml");
 
         Coach theCoach = context.getBean("myCoach", Coach.class);
         Coach alphaCoach = context.getBean("myCoach", Coach.class);
