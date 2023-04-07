@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/styles/css/style.css">
+        <script src="/styles/js/test.js"></script>
+        <title>Welcome</title>
+    </head>
+      <body>
+        <h1>Hello World of Spring!</h1>
+
+        <br><br>
+
+        <h2>Student name:
+          <span th:text="${param.studentName}"></span>
+        </h2>
+
+        <br><br>
+
+        <h3>The message:
+            <span th:text="${message}"></span>
+        </h3>
+    </body>
+</html>

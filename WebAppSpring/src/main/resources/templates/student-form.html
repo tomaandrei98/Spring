@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Student registration form</title>
+    </head>
+    <body>
+    <form action="processForm" method="GET">
+        First name: <input type="text" name="firstName" placeholder="What's your first name?" />
+        <br> <br>
+
+        Last name: <input type="text" name="lastName" placeholder="What's your last name?" />
+        <br> <br>
+
+        <label for="country">Choose your country: </label>
+        <select name="country" id="country">
+            <option value="Brazil" label="Brazil">Brazil</option>
+            <option value="France" label="France">France</option>
+            <option value="Germany" label="Germany">Germany</option>
+            <option value="India" label="India">India</option>
+        </select>
+
+        <br> <br>
+
+        <input type="radio" id="Java" name="language" value="Java" checked="true">
+        <label for="Java">Java</label>
+        <input type="radio" id="C#" name="language" value="C#">
+        <label for="C#">C#</label>
+        <input type="radio" id="PHP" name="language" value="PHP">
+        <label for="PHP">PHP</label>
+        <input type="radio" id="Ruby" name="language" value="Ruby">
+        <label for="Ruby">Ruby</label>
+
+        <br> <br>
+
+        <input type="checkbox" id="os1" name="os1" value="Linux">
+        <label for="os1">Linux</label>
+        <input type="checkbox" id="os2" name="os2" value="Mac OS">
+        <label for="os2">Mac OS</label>
+        <input type="checkbox" id="os3" name="os3" value="MS Windows">
+        <label for="os3">MS Windows</label>
+
+        <br> <br>
+
+        <input type="submit" value="Submit" />
+    </form>
+    </body>
+</html>

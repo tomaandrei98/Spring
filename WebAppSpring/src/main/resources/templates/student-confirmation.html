@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Student Confirmation</title>
+    </head>
+    <body>
+        The student is confirmed:
+        <br>
+        first name: <span th:text="${param.firstName}"></span>
+        <br>
+        last name: <span th:text="${param.lastName}"></span>
+        <br>
+        country: <span th:text="${param.country}"></span>
+        <br>
+        fav language: <span th:text="${param.language}"></span>
+        <br>
+        op systems:
+            <span th:text="${param.os1}"></span>
+            <span th:text="${param.os2}"></span>
+            <span th:text="${param.os3}"></span>
+    </body>
+</html>
