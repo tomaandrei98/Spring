@@ -15,6 +15,16 @@
         <br> <br>
 
         Last name (*): <input type="text" name="lastName" placeholder="What's your last name?" />
+        <!--        <span style="color: red;">Invalid input tho</span>-->
+        <!--        <p th:if="${#fields.hasErrors('customer')}">invalid input</p>-->
+        <br> <br>
+
+        Free passes: <input type="number" name="freePasses" placeholder="passes no.">
+        <span th:if="${#fields.hasErrors('customer')}" th:errorclass="error" th:errors="*{freePasses}">invalid passes</span>
+        <br> <br>
+
+        Postal code: <input type="text" name="postalCode" placeholder="postal code.">
+        <span th:if="${#fields.hasErrors('customer')}" th:errorclass="error" th:errors="*{postalCode}">invalid postal code</span>
         <br> <br>
 
         <input type="submit" value="Submit">

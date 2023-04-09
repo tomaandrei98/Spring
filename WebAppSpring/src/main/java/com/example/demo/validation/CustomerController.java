@@ -37,7 +37,7 @@ public class CustomerController {
         System.out.println("firstName " + theCustomer.getFirstName());
 
         if (theBindingResult.hasErrors()) {
-            return "customer-form-err";
+            return "customer-form";
         } else {
             return "customer-confirmation";
         }
