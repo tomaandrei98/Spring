@@ -27,6 +27,10 @@
         <span th:if="${#fields.hasErrors('customer')}" th:errorclass="error" th:errors="*{postalCode}">invalid postal code</span>
         <br> <br>
 
+        Course code: <input type="text" name="courseCode" placeholder="course code.">
+        <span th:if="${#fields.hasErrors('customer')}" th:errorclass="error" th:errors="*{courseCode}">invalid course code</span>
+        <br> <br>
+
         <input type="submit" value="Submit">
     </form>
 </body>
