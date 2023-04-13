@@ -1,4 +1,4 @@
-package com.example.demo.mappings.onetoone;
+package com.example.demo.mappings.onetoone.onedirectional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -28,7 +28,7 @@ public class CreateDemo {
 
             session.beginTransaction();
 
-            System.out.println("Saving instructor: " +tempInstructor);
+            System.out.println("Saving instructor: " + tempInstructor);
             session.persist(tempInstructor);
 
             session.getTransaction().commit();

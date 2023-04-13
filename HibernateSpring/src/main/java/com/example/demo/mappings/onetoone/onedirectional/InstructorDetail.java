@@ -1,4 +1,4 @@
-package com.example.demo.mappings.onetoone;
+package com.example.demo.mappings.onetoone.onedirectional;
 
 import jakarta.persistence.*;
 

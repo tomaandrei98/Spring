@@ -1,4 +1,4 @@
-package com.example.demo.mappings.onetoone;
+package com.example.demo.mappings.onetoone.bidirectional;
 
 import jakarta.persistence.*;
 
@@ -80,7 +80,6 @@ public class Instructor {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", instructorDetail=" + instructorDetail +
                 '}';
     }
 }
