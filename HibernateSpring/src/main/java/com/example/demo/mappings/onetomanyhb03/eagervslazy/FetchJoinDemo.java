@@ -1,12 +1,11 @@
-package com.example.demo.mappings.onetomany.eagervslazy;
+package com.example.demo.mappings.onetomanyhb03.eagervslazy;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
-import java.util.List;
-
-public class EagerLazyDemo {
+public class FetchJoinDemo {
     public static void main(String[] args) {
         SessionFactory factory = new Configuration()
                 .configure()
@@ -21,11 +20,13 @@ public class EagerLazyDemo {
             session.beginTransaction();
 
             int theId = 1;
-            Instructor tempInstructor = session.get(Instructor.class, theId);
-            System.out.println("luv2code: Current instructor:" + tempInstructor);
+            Query<Instructor> query = session.createQuery("SELECT i FROM Instructor i " +
+                    "JOIN FETCH i.courses " +
+                    "WHERE i.id=:theInstructorId", Instructor.class);
+            query.setParameter("theInstructorId", theId);
 
-            List<Course> courses = tempInstructor.getCourses();
-            System.out.println("luv2code: Courses: " + courses);
+            Instructor tempInstructor = query.getSingleResult();
+            System.out.println("luv2code: Instructor: " + tempInstructor);
 
             session.getTransaction().commit();
             session.close();

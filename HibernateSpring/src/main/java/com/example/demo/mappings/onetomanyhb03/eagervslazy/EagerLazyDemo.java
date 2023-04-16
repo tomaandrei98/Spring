@@ -1,10 +1,12 @@
-package com.example.demo.mappings.onetomany;
+package com.example.demo.mappings.onetomanyhb03.eagervslazy;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class CreateCoursesDemo {
+import java.util.List;
+
+public class EagerLazyDemo {
     public static void main(String[] args) {
         SessionFactory factory = new Configuration()
                 .configure()
@@ -20,17 +22,15 @@ public class CreateCoursesDemo {
 
             int theId = 1;
             Instructor tempInstructor = session.get(Instructor.class, theId);
+            System.out.println("luv2code: Current instructor:" + tempInstructor);
 
-            Course tempCourse1 = new Course("Air Guitar - The Ultimate Guide");
-            Course tempCourse2 = new Course("The Pinball Masterclass");
-
-            tempInstructor.add(tempCourse1);
-            tempInstructor.add(tempCourse2);
-
-            session.persist(tempCourse1);
-            session.persist(tempCourse2);
+            List<Course> courses = tempInstructor.getCourses();
+            System.out.println("luv2code: Courses: " + courses);
 
             session.getTransaction().commit();
+            session.close();
+
+            System.out.println("luv2code: Courses: " + tempInstructor.getCourses());
         }
     }
 }

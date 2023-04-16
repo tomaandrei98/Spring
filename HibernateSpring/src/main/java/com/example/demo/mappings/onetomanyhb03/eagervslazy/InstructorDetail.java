@@ -1,4 +1,4 @@
-package com.example.demo.mappings.onetomany.eagervslazy;
+package com.example.demo.mappings.onetomanyhb03.eagervslazy;
 
 import jakarta.persistence.*;
 

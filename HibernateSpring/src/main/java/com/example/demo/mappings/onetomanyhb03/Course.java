@@ -1,4 +1,4 @@
-package com.example.demo.mappings.onetomany;
+package com.example.demo.mappings.onetomanyhb03;
 
 import jakarta.persistence.*;
 

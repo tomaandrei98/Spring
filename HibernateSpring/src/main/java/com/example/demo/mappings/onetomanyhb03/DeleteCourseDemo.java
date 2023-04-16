@@ -1,10 +1,10 @@
-package com.example.demo.mappings.onetomany;
+package com.example.demo.mappings.onetomanyhb03;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class CreateInstructorDemo {
+public class DeleteCourseDemo {
     public static void main(String[] args) {
         SessionFactory factory = new Configuration()
                 .configure()
@@ -16,14 +16,13 @@ public class CreateInstructorDemo {
         Session session = factory.getCurrentSession();
 
         try (factory) {
-            Instructor tempInstructor = new Instructor("Toma", "Andrei", "tomaandrei98@gmail.com");
-            InstructorDetail tempInstructorDetail = new InstructorDetail("http://www.youtube.com", "Java");
-
-            tempInstructor.setInstructorDetail(tempInstructorDetail);
-
             session.beginTransaction();
 
-            session.persist(tempInstructor);
+            int theId = 10;
+            Course tempCourse = session.get(Course.class, theId);
+            System.out.println(tempCourse);
+
+            session.remove(tempCourse);
 
             session.getTransaction().commit();
         }

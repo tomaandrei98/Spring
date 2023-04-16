@@ -1,4 +1,4 @@
-package com.example.demo.mappings.onetomany.eagervslazy;
+package com.example.demo.mappings.onetomanyhb04;
 
 import jakarta.persistence.*;
 
@@ -31,6 +31,8 @@ public class Instructor {
             mappedBy = "instructor",
             cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Course> courses;
+
+
 
     public Instructor() { }
 

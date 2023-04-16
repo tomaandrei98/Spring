@@ -1,6 +1,9 @@
-package com.example.demo.mappings.onetomany.eagervslazy;
+package com.example.demo.mappings.onetomanyhb04;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "course")
@@ -17,7 +20,12 @@ public class Course {
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 
-    public Course() { }
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_id")
+    private List<Review> reviews;
+
+    public Course() {
+    }
 
     public Course(String title) {
         this.title = title;
@@ -45,6 +53,22 @@ public class Course {
 
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public void addReview(Review theReview) {
+        if (reviews == null) {
+            reviews = new ArrayList<>();
+        }
+
+        reviews.add(theReview);
     }
 
     @Override
