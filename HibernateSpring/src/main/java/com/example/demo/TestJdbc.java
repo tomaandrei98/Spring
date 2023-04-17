@@ -9,7 +9,8 @@ public class TestJdbc {
 //            String jdbcUrl = "jdbc:mysql://localhost:3306/hb_student_tracker";
 //            String jdbcUrl = "jdbc:mysql://localhost:3306/hb-01-one-to-one-uni";
 //            String jdbcUrl = "jdbc:mysql://localhost:3306/hb-03-one-to-many";
-            String jdbcUrl = "jdbc:mysql://localhost:3306/hb-04-one-to-many-uni";
+//            String jdbcUrl = "jdbc:mysql://localhost:3306/hb-04-one-to-many-uni";
+            String jdbcUrl = "jdbc:mysql://localhost:3306/hb-05-many-to-many";
             String user = "hbstudent";
             String password = "hbstudent";
 
