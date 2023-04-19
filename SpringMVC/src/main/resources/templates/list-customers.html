@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <link type="text/css" rel="stylesheet" href="/css/add-customer-style.css">
+    <link type="text/css" rel="stylesheet" href="/css/main-style.css">
+    <script src="/js/script.js" defer></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-  List Customers - coming soon..
+<div id="wrapper">
+    <div id="header">
+        <h2>CRM Customer Relationship Manager</h2>
+    </div>
+</div>
+
+<div id="container">
+    <div id="content">
+        <table id="table">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+
+            <tr th:each="customer: ${customers}">
+                <td th:text="${customer.firstName}"></td>
+                <td th:text="${customer.lastName}"></td>
+                <td th:text="${customer.email}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
 </body>
 </html>
