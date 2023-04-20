@@ -17,21 +17,20 @@ import java.util.List;
 @Service
 public class CustomerDAOImpl implements CustomerDAO {
     private SessionFactory sessionFactory;
+    private Session session;
 
     public CustomerDAOImpl() {
         sessionFactory = new Configuration()
                 .configure()
                 .addAnnotatedClass(Customer.class)
                 .buildSessionFactory();
+
+        session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
     }
 
     @Override
-    @Transactional
     public List<Customer> getCustomers() {
-        Session session = sessionFactory.getCurrentSession();
-
-        session.beginTransaction();
-
         Query<Customer> theQuery =
                 session.createQuery("from Customer", Customer.class);
 
