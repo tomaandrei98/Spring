@@ -19,7 +19,7 @@
 		<h3>Save Customer</h3>
 	
 		<form action="saveCustomer" th:object="${customer}" method="POST">
-		
+			<input type="hidden" th:value="${customer.id}" th:attr="name='id'">
 			<table>
 				<tbody>
 					<tr>
