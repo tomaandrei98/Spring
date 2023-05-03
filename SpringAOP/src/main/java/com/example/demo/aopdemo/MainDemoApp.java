@@ -12,7 +12,7 @@ public class MainDemoApp {
         AccountDAO theAccountDAO = context.getBean("accountDAO", AccountDAO.class);
         MembershipDAO theMembershipDAO = context.getBean("membershipDAO", MembershipDAO.class);
 
-        theAccountDAO.addAccount(new Account(), true);
+        theAccountDAO.addAccount(new Account("John", "Platinum"), true);
         theAccountDAO.doWork();
         theAccountDAO.setName("foobar");
         theAccountDAO.setServiceCode("silver");
