@@ -2,11 +2,14 @@ package com.example.demo.aopdemo.aspect;
 
 import com.example.demo.aopdemo.Account;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Aspect
 @Component
@@ -36,5 +39,22 @@ public class MyDemoLoggingAspect {
                 System.out.println("account level: " + theAccount.getLevel());
             }
         }
+    }
+
+    @AfterReturning(
+            pointcut = "execution(* com.example.demo.aopdemo.dao.AccountDAOAfterReturning.findAccounts(..))",
+            returning = "result")
+    public void afterReturningFindAccountsAdvice(JoinPoint joinPoint, List<Account> result) {
+        String method = joinPoint.getSignature().toShortString();
+        System.out.println("\n=====>>> Executing @AfterReturning on method: " + method);
+
+        System.out.println("\n=====>>> result is: " + result);
+        convertAccountNamesToUpperCase(result);
+
+        System.out.println("\n=====>>> result is: " + result);
+    }
+
+    private void convertAccountNamesToUpperCase(List<Account> result) {
+        result.forEach(account -> account.setName(account.getName().toUpperCase()));
     }
 }
