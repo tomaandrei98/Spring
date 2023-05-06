@@ -5,17 +5,22 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java.util.List;
 
-public class AfterReturningDemoApp {
+public class AfterThrowingDemoApp {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(DemoConfig.class);
 
         AccountDAOAfterReturning theAccountDAO =
                 context.getBean("accountDAOAfterReturning", AccountDAOAfterReturning.class);
+        List<Account> accounts = null;
 
-        List<Account> accounts = theAccountDAO.findAccounts(false);
+        try {
+            accounts = theAccountDAO.findAccounts(true);
+        } catch (Exception e) {
+            System.out.println("\n\nMain Program .. caught exception: " + e.getMessage());
+        }
 
-        System.out.println("\n\nMain Program: AfterReturningDemoApp");
+        System.out.println("\n\nMain Program: AfterThrowingDemoApp");
         System.out.println(accounts);
 
         context.close();

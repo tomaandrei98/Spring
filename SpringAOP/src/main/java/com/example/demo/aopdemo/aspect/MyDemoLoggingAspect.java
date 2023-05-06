@@ -3,6 +3,7 @@ package com.example.demo.aopdemo.aspect;
 import com.example.demo.aopdemo.Account;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -52,6 +53,16 @@ public class MyDemoLoggingAspect {
         convertAccountNamesToUpperCase(result);
 
         System.out.println("\n=====>>> result is: " + result);
+    }
+
+    @AfterThrowing(
+            pointcut = "execution(* com.example.demo.aopdemo.dao.AccountDAOAfterReturning.findAccounts(..))",
+            throwing = "theExc")
+    public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable theExc) {
+        String method = joinPoint.getSignature().toShortString();
+        System.out.println("\n=====>>> Executing @AfterThrowing on method: " + method);
+
+        System.out.println("\n=====>>> exception is: " + theExc);
     }
 
     private void convertAccountNamesToUpperCase(List<Account> result) {

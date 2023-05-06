@@ -19,7 +19,11 @@ public class AccountDAOAfterReturning {
         this.level = level;
     }
 
-    public List<Account> findAccounts() {
+    public List<Account> findAccounts(boolean tripWire) {
+        if (tripWire) {
+            throw new RuntimeException("No soup for you!");
+        }
+
         List<Account> myAccounts = new ArrayList<>();
 
         Account temp1 = new Account("John", "Silver");
