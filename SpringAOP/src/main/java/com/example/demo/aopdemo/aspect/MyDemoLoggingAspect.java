@@ -2,17 +2,45 @@ package com.example.demo.aopdemo.aspect;
 
 import com.example.demo.aopdemo.Account;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @Aspect
 @Component
 @Order(2)
 public class MyDemoLoggingAspect {
+    private Logger myLogger =
+            Logger.getLogger(getClass().getName());
+
+    @Around("execution(* com.example.demo.aopdemo.service.*.getFortune(..))")
+    public Object aroundGetFortune(ProceedingJoinPoint theProceedingJoinPoint) throws Throwable {
+        String method = theProceedingJoinPoint.getSignature().toShortString();
+        myLogger.info("\n=====>>> Executing @Around on method: " + method);
+
+        long begin = System.currentTimeMillis();
+        Object result = null;
+
+        try {
+            result = theProceedingJoinPoint.proceed();
+        } catch (RuntimeException e) {
+            myLogger.warning(e.getMessage());
+            result = "Major accident! But no worries..";
+            throw e;
+        }
+
+        long end = System.currentTimeMillis();
+        long duration = end - begin;
+        myLogger.info("\n=====>> Duration: " + duration / 1_000.0 + " seconds");
+
+        return result;
+    }
+
     @After("execution(* com.example.demo.aopdemo.dao.AccountDAOAfterReturning.findAccounts(..))")
     public void afterFinallyFindAccountsAdvice(JoinPoint theJoinPoint) {
         String method = theJoinPoint.getSignature().toShortString();
