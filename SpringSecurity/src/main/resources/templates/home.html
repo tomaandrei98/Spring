@@ -6,10 +6,24 @@
 </head>
 <body>
     <h2>Company Home Page</h2>
+
     <hr>
+
     <p>
         Welcome to the Company home page!
     </p>
+
+    <hr>
+
+    <p>
+        UserDetails: <span th:text="${principal}"></span>
+        <br>
+        User: <span th:text="${principal.username}"></span>
+        <br>
+        Role(s): <span th:text="${principal.authorities}"></span>
+    </p>
+
+    <hr>
 
     <form th:action="@{/logout}" method='POST'>
         <input type="submit" value="Logout"/>
