@@ -6,15 +6,11 @@
 </head>
 <body>
     <h2>Company Home Page</h2>
-
     <hr>
-
     <p>
         Welcome to the Company home page!
     </p>
-
     <hr>
-
     <p>
         UserDetails: <span th:text="${principal}"></span>
         <br>
@@ -22,7 +18,23 @@
         <br>
         Role(s): <span th:text="${principal.authorities}"></span>
     </p>
+    <hr>
 
+    <span>
+        <p>
+            <a th:href="@{/leaders}">LeaderShip Meeting</a>
+            (Only for Manager peeps)
+        <hr>
+        </p>
+    </span>
+
+    <span>
+        <p>
+            <a th:href="@{/systems}">IT Systems Meeting</a>
+            (Only for Admin peeps)
+        <hr>
+        </p>
+    </span>
     <hr>
 
     <form th:action="@{/logout}" method='POST'>

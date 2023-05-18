@@ -16,16 +16,18 @@ public class SecurityConfiguration {
     public InMemoryUserDetailsManager userDetailsService() {
         UserDetails user1 = User.withDefaultPasswordEncoder().username("john").password("test123").roles("EMPLOYEE").build();
         UserDetails user2 = User.withDefaultPasswordEncoder().username("mary").password("test123").roles("EMPLOYEE", "MANAGER").build();
-        UserDetails user3 = User.withDefaultPasswordEncoder().username("susan").password("test123").roles("ADMIN").build();
+        UserDetails user3 = User.withDefaultPasswordEncoder().username("susan").password("test123").roles("EMPLOYEE", "ADMIN").build();
         return new InMemoryUserDetailsManager(user1, user2, user3);
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests()
-                .anyRequest().authenticated()
+                .requestMatchers("/").hasRole("EMPLOYEE")
+                .requestMatchers("/leaders/**").hasAnyRole("MANAGER")
+                .requestMatchers("/systems/**").hasRole("ADMIN")
                 .and()
-                .formLogin()
+                    .formLogin()
                     .loginPage("/showMyLoginPage")
                     .loginProcessingUrl("/authenticateTheUser")
                     .permitAll()
