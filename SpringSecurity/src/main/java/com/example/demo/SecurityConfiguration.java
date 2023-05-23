@@ -33,6 +33,7 @@ public class SecurityConfiguration {
                     .permitAll()
                 .and()
                     .logout().permitAll()
-                .and().build();
+                .and()
+                    .build();
     }
 }
